@@ -13,5 +13,12 @@ namespace PSIU_WEB.Data
         public DbSet<Pacient>? Pacients { get; set; }
 
         public DbSet<Psycho>? Psychos { get; set; }
+        
+        public DbSet<Category>? Categories { get; set; }
+
+        public DbSet<Content>? Contents { get; set; }
+
+        public DbSet<ContentCategory>? ContentCategories { get; set; }
+
     }
 }

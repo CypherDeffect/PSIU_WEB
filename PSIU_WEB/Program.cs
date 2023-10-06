@@ -19,6 +19,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IPacientRepository, EFPacientRepository>();
 
+builder.Services.AddScoped<IPsychoRepository, EFPsychoRepository>();
+
 builder.Services.AddIdentity<AppUser, IdentityRole>(
     options =>
     {

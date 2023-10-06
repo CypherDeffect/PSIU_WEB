@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PSIU_WEB.Data;
 
@@ -11,9 +12,10 @@ using PSIU_WEB.Data;
 namespace PSIU_WEB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231006001618_Models-Category-Content-FixDbContext")]
+    partial class ModelsCategoryContentFixDbContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -287,32 +289,6 @@ namespace PSIU_WEB.Migrations
                     b.ToTable("Contents");
                 });
 
-            modelBuilder.Entity("PSIU_WEB.Models.ContentCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Category")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ContentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ContentId");
-
-                    b.ToTable("ContentCategories");
-                });
-
             modelBuilder.Entity("PSIU_WEB.Models.Pacient", b =>
                 {
                     b.Property<int>("Id")
@@ -445,23 +421,6 @@ namespace PSIU_WEB.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("PSIU_WEB.Models.ContentCategory", b =>
-                {
-                    b.HasOne("PSIU_WEB.Models.Category", null)
-                        .WithMany("ContentsCategories")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PSIU_WEB.Models.Content", "Content")
-                        .WithMany("ContentsCategories")
-                        .HasForeignKey("ContentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Content");
-                });
-
             modelBuilder.Entity("PSIU_WEB.Models.Pacient", b =>
                 {
                     b.HasOne("PSIU_WEB.Models.AppUser", "User")
@@ -478,16 +437,6 @@ namespace PSIU_WEB.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("PSIU_WEB.Models.Category", b =>
-                {
-                    b.Navigation("ContentsCategories");
-                });
-
-            modelBuilder.Entity("PSIU_WEB.Models.Content", b =>
-                {
-                    b.Navigation("ContentsCategories");
                 });
 #pragma warning restore 612, 618
         }
