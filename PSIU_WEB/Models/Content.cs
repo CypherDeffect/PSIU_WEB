@@ -20,8 +20,8 @@ namespace PSIU_WEB.Models
         public string Psycho { get; set; }
 
         public List<ContentCategory> ContentsCategories { get; set; }
-
-
+                                     //Entidade
+          
 
     }
 }
