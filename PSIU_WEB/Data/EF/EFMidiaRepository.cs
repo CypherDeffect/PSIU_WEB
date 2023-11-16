@@ -40,7 +40,7 @@ namespace PSIU_WEB.Data.EF
 
         }
 
-        public new Midia? GetMidiaById(int id)
+        public Midia? GetMidiaById(int id)
         {
             Midia? m =
                  context

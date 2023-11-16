@@ -8,15 +8,15 @@ namespace PSIU_WEB.Models
         // Atributos 
 
         [Key] //Chave Primária 
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int? Id { get; set; }
+        public string? Name { get; set; }
         public int? ParentId { get; set; }
 
         [ForeignKey("ParentId")] // Chave Estrangeira
 
         public Category? Parent { get; set; }
 
-        public List<ContentCategory> ContentsCategories { get; set; } //<itens da lista> vários categories na lista
+        public List<ContentCategory>? ContentsCategories { get; set; } //<itens da lista> vários categories na lista
 
 
     }
